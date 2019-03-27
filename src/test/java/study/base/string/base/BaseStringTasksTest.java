@@ -8,6 +8,7 @@ class BaseStringTasksTest {
 
   private final Tags tags = new Tags();
   private final WithoutEnd withoutEnd = new WithoutEnd();
+  private final WithoutSymbols withoutSymbols = new WithoutSymbols();
   private final StringBuilder sb = new StringBuilder();
   private final static String TAG = "div";
   private final static String TEXT = "Lorem Ipsum";
@@ -44,6 +45,24 @@ class BaseStringTasksTest {
         String.valueOf(TAG.charAt(1)),
         withoutEnd.withoutEnd(TAG)
     );
+  }
+
+  @Test
+  void testExceptionForWithoutSymbols() {
+    assertThrows(NullPointerException.class, () -> withoutSymbols.without(null, TEXT));
+    assertThrows(NullPointerException.class, () -> withoutSymbols.without(TAG, null));
+    assertThrows(NullPointerException.class, () -> withoutSymbols.without(null, null));
+    assertThrows(IllegalArgumentException.class, () -> withoutSymbols.without(EMPTY_STRING, TEXT));
+    assertThrows(IllegalArgumentException.class, () -> withoutSymbols.without(TAG, EMPTY_STRING));
+    assertThrows(IllegalArgumentException.class, () -> withoutSymbols.without(EMPTY_STRING, EMPTY_STRING));
+  }
+
+  @Test
+  void withoutSymbolsTest() {
+    assertEquals("Test", withoutSymbols.without("+", "++T+++e++s+t+++++++++++++"));
+    assertEquals("LoremIpsum", withoutSymbols.without(" ", TEXT));
+    assertEquals(TAG, withoutSymbols.without(TEXT, TAG));
+    assertEquals("", withoutSymbols.without(TAG, TAG));
   }
 
   private String expectedContent() {
