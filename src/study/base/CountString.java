@@ -3,19 +3,33 @@ import java.io.*;
 import java.util.*;
 
 public class CountString {
-    static PrintWriter pw = new PrintWriter(System.out,true);
+
     static Scanner sc = new Scanner (System.in);
 
     public static void main(String[] args) {
+        PrintWriter pw = new PrintWriter(System.out,true);
+        boolean check = true;
+        while(check) {
+            try {
+                pw.println("Enter you number, please: ");
+                long number = sc.nextLong();
+                pw.println("To what degree will raise you number: ");
+                long degree = sc.nextLong();
+                long temporary_deegre = degree; //variable for final sysout
+                long result = 1;
 
-       pw.println("Введите число: ");
-       String str = sc.next();
-       int sum = 0;
+                while (degree != 0) {
+                    result *= number;
+                    degree--;
+                }
+                pw.println(number + " в " + temporary_deegre + " степени = " + result);
+                check = false;
 
-       for(int i = 0; i<str.length(); i++){
-          sum += Integer.parseInt(String.valueOf(str.charAt(i)));
-       }
-
-       pw.println(sum);
+            } catch (Exception e) {
+                pw.println("Ошибка! Повторите ввод");
+                sc.next();
+                continue;
+            }
+        }
     }
 }
