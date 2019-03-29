@@ -2,7 +2,7 @@ package FirstSteps;
 import java.io.*;
 import java.util.*;
 
-public class CountString {
+public class NumberOnDegree {
 
     static Scanner sc = new Scanner (System.in);
 
