@@ -6,15 +6,15 @@ package study.base.string.base;
  * In this example, the "i" tag makes <i> and </i> which surround the word "Yay".
  * Given tag and word strings, create the HTML string with tags around the word, e.g. "<i>Yay</i>".
  *
- * makeTags("i", "Yay") → "<i>Yay</i>"
- * makeTags("i", "Hello") → "<i>Hello</i>"
- * makeTags("cite", "Yay") → "<cite>Yay</cite>"
+ * mark("i", "Yay") → "<i>Yay</i>"
+ * mark("i", "Hello") → "<i>Hello</i>"
+ * mark("cite", "Yay") → "<cite>Yay</cite>"
  *
  * Should throw NullPointerException if one of arguments is null or IllegalArgumentException if empty
  */
 public class Tags {
 
-  public String makeTags(String tag, String word) {
+  public String mark(String tag, String word) {
     return null;
   }
 

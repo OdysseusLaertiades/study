@@ -5,16 +5,16 @@ package study.base.string.base;
  * The string length will be at least 2.
  *
  *
- * withoutEnd("Hello") → "ell"
- * withoutEnd("java") → "av"
- * withoutEnd("coding") → "odin"
+ * without("Hello") → "ell"
+ * without("java") → "av"
+ * without("coding") → "odin"
  *
  * Should throw NullPointerException if one of arguments is null or IllegalArgumentException if empty
  * or have bad condition
  */
 public class WithoutEnd {
 
-  public String withoutEnd(String str) {
+  public String without(String str) {
     return null;
   }
 
