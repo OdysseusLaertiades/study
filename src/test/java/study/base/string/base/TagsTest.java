@@ -3,8 +3,10 @@ package study.base.string.base;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-class TagsTest extends BaseStringTest {
+class TagsTest extends TestData {
 
   private final Tags tags = new Tags();
 
@@ -16,14 +18,14 @@ class TagsTest extends BaseStringTest {
     );
   }
 
-  @Test
-  void markMethodTest_ShouldCorrectlyThrowException() {
-    assertThrows(NullPointerException.class, () -> tags.mark(null, TEXT));
-    assertThrows(NullPointerException.class, () -> tags.mark(TAG, null));
-    assertThrows(NullPointerException.class, () -> tags.mark(null, null));
-    assertThrows(IllegalArgumentException.class, () -> tags.mark(EMPTY_STRING, TEXT));
-    assertThrows(IllegalArgumentException.class, () -> tags.mark(TAG, EMPTY_STRING));
-    assertThrows(IllegalArgumentException.class, () -> tags.mark(EMPTY_STRING, EMPTY_STRING));
+  @ParameterizedTest
+  @MethodSource("commonStringArgumentsAndExceptionsThatTheyCause")
+  void markMethodTest_ShouldCorrectlyThrowException(
+      Class<? extends Exception> exceptionClass,
+      String firstArgument,
+      String secondArgument
+  ) {
+    assertThrows(exceptionClass, () -> tags.mark(firstArgument, secondArgument));
   }
 
   private String expectedContent() {

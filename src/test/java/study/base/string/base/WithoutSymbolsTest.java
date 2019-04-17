@@ -3,8 +3,10 @@ package study.base.string.base;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-class WithoutSymbolsTest extends BaseStringTest {
+class WithoutSymbolsTest extends TestData {
 
   private final WithoutSymbols withoutSymbols = new WithoutSymbols();
 
@@ -16,13 +18,13 @@ class WithoutSymbolsTest extends BaseStringTest {
     assertEquals("", withoutSymbols.without(TAG, TAG));
   }
 
-  @Test
-  void withoutSymbolsTest_ShouldCorrectlyThrowException() {
-    assertThrows(NullPointerException.class, () -> withoutSymbols.without(null, TEXT));
-    assertThrows(NullPointerException.class, () -> withoutSymbols.without(TAG, null));
-    assertThrows(NullPointerException.class, () -> withoutSymbols.without(null, null));
-    assertThrows(IllegalArgumentException.class, () -> withoutSymbols.without(EMPTY_STRING, TEXT));
-    assertThrows(IllegalArgumentException.class, () -> withoutSymbols.without(TAG, EMPTY_STRING));
-    assertThrows(IllegalArgumentException.class, () -> withoutSymbols.without(EMPTY_STRING, EMPTY_STRING));
+  @ParameterizedTest
+  @MethodSource("commonStringArgumentsAndExceptionsThatTheyCause")
+  void withoutSymbolsTest_ShouldCorrectlyThrowException(
+      Class<? extends Exception> exceptionClass,
+      String firstArgument,
+      String secondArgument
+  ) {
+    assertThrows(exceptionClass, () -> withoutSymbols.without(firstArgument, secondArgument));
   }
 }

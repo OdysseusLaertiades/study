@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class WithoutEndTest extends BaseStringTest {
+class WithoutEndTest extends TestData {
 
   private final WithoutEnd withoutEnd = new WithoutEnd();
 
