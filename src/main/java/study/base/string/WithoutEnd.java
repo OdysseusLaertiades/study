@@ -1,4 +1,4 @@
-package study.base.string.base;
+package study.base.string;
 
 /**
  * Given a string, return a version without the first and last char, so "Hello" yields "ell".
@@ -12,9 +12,10 @@ package study.base.string.base;
  * Should throw NullPointerException if one of arguments is null or IllegalArgumentException if empty
  * or have bad condition
  */
+
 public class WithoutEnd {
 
-  public String without(String str) {
+  public String without(String source) {
     return null;
   }
 

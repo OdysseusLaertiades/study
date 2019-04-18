@@ -1,4 +1,4 @@
-package study.base.string.base;
+package study.base.string;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.params.provider.Arguments;
@@ -18,6 +18,15 @@ class TestData {
         Arguments.of(IllegalArgumentException.class, EMPTY_STRING, TEXT),
         Arguments.of(IllegalArgumentException.class, TAG, EMPTY_STRING),
         Arguments.of(IllegalArgumentException.class, EMPTY_STRING, EMPTY_STRING)
+    );
+  }
+
+  static Stream<Arguments> notValidChars() {
+    return Stream.of(
+        Arguments.of('1'),
+        Arguments.of('%'),
+        Arguments.of(','),
+        Arguments.of('\n')
     );
   }
 }

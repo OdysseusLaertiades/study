@@ -1,4 +1,4 @@
-package study.base.string.base;
+package study.base.string;
 
 /**
  * remove all entered symbols from given string, return the string without those symbols,
@@ -11,6 +11,7 @@ package study.base.string.base;
  *
  * Should throw NullPointerException if one of arguments is null or IllegalArgumentException if empty
  */
+
 public class WithoutSymbols {
 
   public String without(String toRemove, String source) {

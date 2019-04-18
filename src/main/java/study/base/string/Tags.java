@@ -1,4 +1,4 @@
-package study.base.string.base;
+package study.base.string;
 
 
 /**
@@ -12,9 +12,10 @@ package study.base.string.base;
  *
  * Should throw NullPointerException if one of arguments is null or IllegalArgumentException if empty
  */
+
 public class Tags {
 
-  public String mark(String tag, String word) {
+  public String mark(String tag, String source) {
     return null;
   }
 

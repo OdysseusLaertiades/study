@@ -1,4 +1,4 @@
-package study.base.string.base;
+package study.base.string;
 
 import static org.junit.jupiter.api.Assertions.*;
 
