@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
  */
 
 @RequiredArgsConstructor
-public class CaesarСipher {
+public class CaesarCipher {
 
   private final int offset;
 
