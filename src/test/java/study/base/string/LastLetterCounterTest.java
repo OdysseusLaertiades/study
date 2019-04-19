@@ -1,5 +1,6 @@
 package study.base.string;
 
+import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -73,11 +74,11 @@ class LastLetterCounterTest extends TestData {
   @SneakyThrows
   private List<String> getTextFileString() {
     return Files.readAllLines(
-        Paths.get(
+        Paths.get(requireNonNull(
             getClass()
                 .getClassLoader()
-                .getResource("java.txt")
-                .toURI()
+                .getResource("java.txt"))
+            .toURI()
         )
     );
   }
