@@ -16,7 +16,23 @@ package study.base.string;
 public class WithoutEnd {
 
   public String without(String source) {
-    return null;
+
+    try{
+      source.toUpperCase();
+
+      if(source.contains(" ") || source.length()<2){
+        throw new IllegalArgumentException();
+      }
+
+    } catch(NullPointerException e){
+      System.out.println("Error! You word is null!");
+      return source;
+
+    } catch(IllegalArgumentException ex){
+      System.out.println("Error! You word is not legal!");
+      return source;
+    }
+    return source.substring(1,source.length()-1);
   }
 
 }
