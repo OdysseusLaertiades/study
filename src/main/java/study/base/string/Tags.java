@@ -16,7 +16,34 @@ package study.base.string;
 public class Tags {
 
   public String mark(String tag, String source) {
-    return null;
+
+    StringBuilder sb = new StringBuilder();
+
+    try {
+
+      tag.toUpperCase();
+      source.toUpperCase();
+
+      if (tag.charAt(0) == ' ' || source.charAt(0) == ' '){
+        throw new IllegalArgumentException();
+      }
+
+      sb.append("<")
+              .append(tag)
+              .append(">")
+              .append(source)
+              .append("</")
+              .append(tag)
+              .append(">");
+
+    } catch (NullPointerException e){
+      System.out.println("Error! You word is null!");
+      return null;
+    } catch (IllegalArgumentException ex){
+      System.out.println("Error! You word is not legal!");
+      return " ";
+    }
+    return sb.toString();
   }
 
 }
