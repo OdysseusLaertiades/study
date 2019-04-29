@@ -17,22 +17,13 @@ public class WithoutEnd {
 
   public String without(String source) {
 
-    try{
       source.toUpperCase();
 
       if(source.contains(" ") || source.length()<2){
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("Error! You word is not legal!");
       }
 
-    } catch(NullPointerException e){
-      System.out.println("Error! You word is null!");
-      return source;
-
-    } catch(IllegalArgumentException ex){
-      System.out.println("Error! You word is not legal!");
-      return source;
-    }
-    return source.substring(1,source.length()-1);
+      return source.substring(1,source.length()-1);
   }
 
 }
