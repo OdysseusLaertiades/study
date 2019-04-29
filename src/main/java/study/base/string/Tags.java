@@ -19,13 +19,11 @@ public class Tags {
 
     StringBuilder sb = new StringBuilder();
 
-    try {
-
       tag.toUpperCase();
       source.toUpperCase();
 
       if (tag.charAt(0) == ' ' || source.charAt(0) == ' '){
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("Error! You word is not legal!");
       }
 
       sb.append("<")
@@ -36,13 +34,6 @@ public class Tags {
               .append(tag)
               .append(">");
 
-    } catch (NullPointerException e){
-      System.out.println("Error! You word is null!");
-      return null;
-    } catch (IllegalArgumentException ex){
-      System.out.println("Error! You word is not legal!");
-      return " ";
-    }
     return sb.toString();
   }
 
