@@ -16,7 +16,19 @@ package study.base.string;
 public class LastLetterCounter {
 
   public long count(String source, char letter) {
-    return 0;
-  }
 
+
+      if (!Character.isLetter(letter)){
+          throw new IllegalArgumentException("Error! You word is absent");
+      }
+
+      long a = 0;
+
+      for (int i = 1; source.length() > i; i++){
+          if (source.charAt(i) == ' ' && Character.toLowerCase(source.charAt(i-1)) == Character.toLowerCase(letter)){
+              a++;
+          }
+      }
+    return a;
+  }
 }
