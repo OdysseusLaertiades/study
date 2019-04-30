@@ -22,13 +22,13 @@ public class LastLetterCounter {
           throw new IllegalArgumentException("Error! You word is absent");
       }
 
-      long a = 0;
+      long sum = 0;
 
       for (int i = 1; source.length() > i; i++){
           if (source.charAt(i) == ' ' && Character.toLowerCase(source.charAt(i-1)) == Character.toLowerCase(letter)){
-              a++;
+              sum++;
           }
       }
-    return a;
+    return sum;
   }
 }
