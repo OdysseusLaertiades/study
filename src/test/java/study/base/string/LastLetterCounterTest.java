@@ -1,20 +1,16 @@
 package study.base.string;
 
-import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.List;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class LastLetterCounterTest extends TestData {
 
+  private static final String FILE_NAME = "java.txt";
   private final LastLetterCounter lastLetterCounter = new LastLetterCounter();
 
   @Test
@@ -22,7 +18,7 @@ class LastLetterCounterTest extends TestData {
     char letter = 'a';
     assertEquals(
         getCountOfWordsThatEndsWith(String.valueOf(letter)),
-        lastLetterCounter.count(getStringWithText(), letter)
+        lastLetterCounter.count(textFileReader.getStringWithText(FILE_NAME), letter)
     );
   }
 
@@ -33,11 +29,11 @@ class LastLetterCounterTest extends TestData {
 
     assertEquals(
         getCountOfWordsThatEndsWith(String.valueOf(lowerCaseLetter)),
-        lastLetterCounter.count(getStringWithText().toUpperCase(), lowerCaseLetter)
+        lastLetterCounter.count(textFileReader.getStringWithText(FILE_NAME).toUpperCase(), lowerCaseLetter)
     );
     assertEquals(
         getCountOfWordsThatEndsWith(String.valueOf(lowerCaseLetter)),
-        lastLetterCounter.count(getStringWithText(), upperCaseLetter)
+        lastLetterCounter.count(textFileReader.getStringWithText(FILE_NAME), upperCaseLetter)
     );
   }
 
@@ -60,26 +56,12 @@ class LastLetterCounterTest extends TestData {
   }
 
   private long getCountOfWordsThatEndsWith(String letter) {
-    return getTextFileString().stream()
+    return textFileReader
+        .getTextFileString(FILE_NAME).stream()
         .map(str -> str.split("\\s"))
         .flatMap(Arrays::stream)
         .filter(str -> str.endsWith(letter))
         .count();
   }
 
-  private String getStringWithText() {
-    return String.join(" ", getTextFileString());
-  }
-
-  @SneakyThrows
-  private List<String> getTextFileString() {
-    return Files.readAllLines(
-        Paths.get(requireNonNull(
-            getClass()
-                .getClassLoader()
-                .getResource("java.txt"))
-            .toURI()
-        )
-    );
-  }
 }

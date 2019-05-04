@@ -2,6 +2,7 @@ package study.base.string;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.params.provider.Arguments;
+import util.TextFileReader;
 
 public class TestData {
 
@@ -9,6 +10,7 @@ public class TestData {
   protected static final String TEXT = "Lorem Ipsum";
   protected static final String EMPTY_STRING = "          ";
   protected static final String ALPHABET_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  protected final TextFileReader textFileReader = new TextFileReader();
 
   static Stream<Arguments> commonStringArgumentsAndExceptionsThatTheyCause() {
     return Stream.of(
