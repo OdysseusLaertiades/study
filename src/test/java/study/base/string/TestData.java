@@ -3,12 +3,12 @@ package study.base.string;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.provider.Arguments;
 
-class TestData {
+public class TestData {
 
-  static final String TAG = "div";
-  static final String TEXT = "Lorem Ipsum";
-  static final String EMPTY_STRING = "          ";
-  static final String ALPHABET_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  protected static final String TAG = "div";
+  protected static final String TEXT = "Lorem Ipsum";
+  protected static final String EMPTY_STRING = "          ";
+  protected static final String ALPHABET_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
   static Stream<Arguments> commonStringArgumentsAndExceptionsThatTheyCause() {
     return Stream.of(
