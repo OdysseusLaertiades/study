@@ -5,10 +5,10 @@ import org.junit.jupiter.params.provider.Arguments;
 
 class TestData {
 
-  final StringBuilder sb = new StringBuilder();
-  final static String TAG = "div";
-  final static String TEXT = "Lorem Ipsum";
-  final static String EMPTY_STRING = "          ";
+  static final String TAG = "div";
+  static final String TEXT = "Lorem Ipsum";
+  static final String EMPTY_STRING = "          ";
+  static final String ALPHABET_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
   static Stream<Arguments> commonStringArgumentsAndExceptionsThatTheyCause() {
     return Stream.of(
