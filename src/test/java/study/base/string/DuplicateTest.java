@@ -1,6 +1,5 @@
 package study.base.string;
 
-import static com.sun.org.apache.xml.internal.utils.LocaleUtility.EMPTY_STRING;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -18,7 +17,7 @@ class DuplicateTest {
 
   @Test
   void find_noDuplicates() {
-    assertEquals(EMPTY_STRING, duplicate.find(WITHOUT_DUPLICATE_SOURCE));
+    assertEquals("", duplicate.find(WITHOUT_DUPLICATE_SOURCE));
   }
 
   @Test
