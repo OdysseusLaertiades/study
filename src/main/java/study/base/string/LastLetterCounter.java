@@ -1,7 +1,6 @@
 package study.base.string;
 
 /**
- *
  * Given a string that contains some text. Count the number of words ending with selected char (not case sensitive).
  *
  * count("Lorem ipsum", 'm') → 2
@@ -10,7 +9,6 @@ package study.base.string;
  * count("", 'a') → 0
  *
  * if character is not letter - throw IllegalArgumentException
- *
 */
 
 public class LastLetterCounter {

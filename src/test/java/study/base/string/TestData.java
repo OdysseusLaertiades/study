@@ -2,13 +2,15 @@ package study.base.string;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.params.provider.Arguments;
+import util.TextFileReader;
 
-class TestData {
+public class TestData {
 
-  final StringBuilder sb = new StringBuilder();
-  final static String TAG = "div";
-  final static String TEXT = "Lorem Ipsum";
-  final static String EMPTY_STRING = "          ";
+  protected static final String TAG = "div";
+  protected static final String TEXT = "Lorem Ipsum";
+  protected static final String EMPTY_STRING = "          ";
+  protected static final String ALPHABET_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  protected final TextFileReader textFileReader = new TextFileReader();
 
   static Stream<Arguments> commonStringArgumentsAndExceptionsThatTheyCause() {
     return Stream.of(

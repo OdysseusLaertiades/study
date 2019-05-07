@@ -28,15 +28,13 @@ class TagsTest extends TestData {
     assertThrows(exceptionClass, () -> tags.mark(firstArgument, secondArgument));
   }
 
-  private String expectedContent() {
-    return sb
-        .append("<")
-        .append(TAG)
-        .append(">")
-        .append(TEXT)
-        .append("</")
-        .append(TAG)
-        .append(">")
-        .toString();
+  private static String expectedContent() {
+    return "<"
+        .concat(TAG)
+        .concat(">")
+        .concat(TEXT)
+        .concat("</")
+        .concat(TAG)
+        .concat(">");
   }
 }
