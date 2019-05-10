@@ -19,7 +19,6 @@ public class WithoutSymbols {
       if (toRemove.charAt(0) == ' ' && !toRemove.equals(" ") || source.charAt(0) == ' '){
           throw new IllegalArgumentException("You sentence is not exist");
       }
-
     return source.replace(toRemove,"");
   }
 }

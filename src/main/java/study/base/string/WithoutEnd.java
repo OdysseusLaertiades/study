@@ -17,12 +17,9 @@ public class WithoutEnd {
 
   public String without(String source) {
 
-
       if(source.contains(" ") || source.length() < 2){
         throw new IllegalArgumentException("Error! You word is not wrong!");
       }
-
       return source.substring(1,source.length()-1);
   }
-
 }
