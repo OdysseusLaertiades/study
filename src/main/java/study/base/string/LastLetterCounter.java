@@ -15,15 +15,14 @@ public class LastLetterCounter {
 
   public long count(String source, char letter) {
 
-
       if (!Character.isLetter(letter)){
           throw new IllegalArgumentException("Error! You word is absent");
       }
-
       long sum = 0;
 
-      for (int i = 1; source.length() > i; i++){
-          if (source.charAt(i) == ' ' && Character.toLowerCase(source.charAt(i-1)) == Character.toLowerCase(letter)){
+      for(String s : source.split("\\s")){
+          Character.toLowerCase(letter);
+          if (s.toLowerCase().endsWith(Character.toString(letter).toLowerCase())){
               sum++;
           }
       }

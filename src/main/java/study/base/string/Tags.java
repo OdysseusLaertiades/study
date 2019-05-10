@@ -1,6 +1,5 @@
 package study.base.string;
 
-
 /**
  * The web is built with HTML strings like "<i>Yay</i>" which draws Yay as italic text.
  * In this example, the "i" tag makes <i> and </i> which surround the word "Yay".
@@ -19,22 +18,16 @@ public class Tags {
 
     StringBuilder sb = new StringBuilder();
 
-      tag.toUpperCase();
-      source.toUpperCase();
-
       if (tag.charAt(0) == ' ' || source.charAt(0) == ' '){
         throw new IllegalArgumentException("Error! You word is not legal!");
       }
 
-      sb.append("<")
+      return sb.append("<")
               .append(tag)
               .append(">")
               .append(source)
               .append("</")
               .append(tag)
-              .append(">");
-
-    return sb.toString();
+              .append(">").toString();
   }
-
 }
