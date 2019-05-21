@@ -12,7 +12,7 @@ class FillerTest {
   private final Filler filler = new Filler();
 
   @Test
-  private void fill() {
+  void fill() {
     String[] strings = new String[10];
     String toFill = "lorem ipsum dolor";
     filler.fill(strings, toFill);
