@@ -15,7 +15,18 @@ package study.base.string;
 public class Triple {
 
   public int count(String source) {
-    return 0;
-  }
 
+    int count = 0;
+
+    String withoutPunctAndWhitsp = source.replaceAll("(?U)[\\pP\\s]", "");
+
+    for (int i = 0; i<withoutPunctAndWhitsp.length()-1; i++) {
+      if (withoutPunctAndWhitsp.length() > 2 && withoutPunctAndWhitsp.charAt(i) == withoutPunctAndWhitsp.charAt(i + 1) &&
+              withoutPunctAndWhitsp.charAt(i + 1) == withoutPunctAndWhitsp.charAt(i + 2)) {
+        count++;
+        i = i + 2;
+      }
+    }
+    return count;
+  }
 }
