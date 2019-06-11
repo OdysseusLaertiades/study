@@ -17,11 +17,48 @@ package study.base.string;
 public class Duplicate {
 
   public String find(String source) {
-    return null;
+
+    StringBuilder sb = new StringBuilder();
+    int count = 1, biggest = 0;
+    String result = "";
+
+    sb.append(source.replaceAll(" ", ""));
+
+    for (int i = 0; i < sb.length(); i++){
+      if(Character.toString(sb.charAt(i)).equals(result) == false) {
+        for (int j = i + 1; j < sb.length(); j++){
+          if (sb.charAt(i) == sb.charAt(j)) {
+            count++;
+          }
+        }
+      }
+      if (count > biggest && biggest != count && count > 1){
+        result = Character.toString(sb.charAt(i));
+        biggest = count;
+      }
+      count = 1;
+    }
+
+    return result;
   }
 
   public String without(String source) {
-    return null;
-  }
 
+    if (!source.contains("\\W")) {
+
+      source = source.replaceAll(" ", "");
+
+      for (int i = 0; i < source.length(); i++) {
+        for (int j = i + 1; j < source.length(); j++) {
+          if (source.charAt(i) == source.charAt(j)) {
+            source = source.replaceAll(Character.toString(source.charAt(i)), "");
+          }
+        }
+      }
+      return source;
+    } else {
+      return source;
+    }
+  }
 }
+
