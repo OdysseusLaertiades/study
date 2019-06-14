@@ -16,15 +16,20 @@ public class Triple {
 
   public int count(String source) {
 
+    String clearStr = source.replaceAll("(?U)[\\pP\\s]", "");
+    return isNextTripleLetterCount(clearStr);
+  }
+
+  public static int isNextTripleLetterCount(String sourceStr){
+
     int count = 0;
+    for (int indexOfLetter = 0; indexOfLetter < sourceStr.length()-1; indexOfLetter++) {
+      if (sourceStr.length() > 2
+              && sourceStr.charAt(indexOfLetter) == sourceStr.charAt(indexOfLetter + 1)
+              && sourceStr.charAt(indexOfLetter + 1) == sourceStr.charAt(indexOfLetter + 2)){
 
-    String withoutPunctAndWhitsp = source.replaceAll("(?U)[\\pP\\s]", "");
-
-    for (int i = 0; i<withoutPunctAndWhitsp.length()-1; i++) {
-      if (withoutPunctAndWhitsp.length() > 2 && withoutPunctAndWhitsp.charAt(i) == withoutPunctAndWhitsp.charAt(i + 1) &&
-              withoutPunctAndWhitsp.charAt(i + 1) == withoutPunctAndWhitsp.charAt(i + 2)) {
         count++;
-        i = i + 2;
+        indexOfLetter = indexOfLetter + 2;
       }
     }
     return count;

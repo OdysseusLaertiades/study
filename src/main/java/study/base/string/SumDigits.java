@@ -16,9 +16,7 @@ public class SumDigits {
 
   public int calculate(String source) {
 
-    Pattern pattern = Pattern.compile("\\d");
-    Matcher matcher = pattern.matcher(source);
-
+    Matcher matcher = Pattern.compile("\\d").matcher(source);
     int count = 0;
 
     while(matcher.find()){

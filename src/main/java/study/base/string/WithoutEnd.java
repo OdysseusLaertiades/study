@@ -1,5 +1,7 @@
 package study.base.string;
 
+import static java.lang.String.format;
+
 /**
  * Given a string, return a version without the first and last char, so "Hello" yields "ell".
  * The string length will be at least 2.
@@ -18,7 +20,7 @@ public class WithoutEnd {
   public String without(String source) {
 
       if(source.contains(" ") || source.length() < 2){
-        throw new IllegalArgumentException("Error! You word is not wrong!");
+        throw new IllegalArgumentException(format("You word '%s' is not legal!", source));
       }
       return source.substring(1,source.length()-1);
   }

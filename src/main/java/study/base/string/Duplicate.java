@@ -16,53 +16,57 @@ package study.base.string;
 
 public class Duplicate {
 
+  static final StringBuilder sb = new StringBuilder();
+
   public String find(String source) {
 
-    StringBuilder sb = new StringBuilder();
-    int count = 1, biggest = 0;
-    String result = "";
-
     sb.append(source.replaceAll(" ", ""));
+    return findMostRepeatedLetter(sb);
+  }
 
+  public static String findMostRepeatedLetter(StringBuilder sb){
+
+    int count = 1, biggestCount = 0;
+    String result = "";
     for (int i = 0; i < sb.length(); i++){
-      if(Character.toString(sb.charAt(i)).equals(result) == false) {
+      if(!Character.toString(sb.charAt(i)).equals("")) {
         for (int j = i + 1; j < sb.length(); j++){
           if (sb.charAt(i) == sb.charAt(j)) {
             count++;
           }
         }
       }
-      if (count > biggest && biggest != count && count > 1){
+      if (count > biggestCount && count > 1){
         result = Character.toString(sb.charAt(i));
-        biggest = count;
+        biggestCount = count;
       }
       count = 1;
     }
-
     return result;
   }
 
+  public static String withChange;
   public String without(String source) {
 
-<<<<<<< HEAD
-}
-=======
-    if (!source.contains("\\W")) {
+    withChange = source.replaceAll(" ", "");
 
-      source = source.replaceAll(" ", "");
+    if (removeDuplicateLetters(withChange) > 0){
+      return withChange;
+    } else return source;
+  }
 
-      for (int i = 0; i < source.length(); i++) {
-        for (int j = i + 1; j < source.length(); j++) {
-          if (source.charAt(i) == source.charAt(j)) {
-            source = source.replaceAll(Character.toString(source.charAt(i)), "");
+  public static int removeDuplicateLetters (String str){
+
+    int  count = 0;
+    for (int i = 0; i<withChange.length(); i++){
+      if (Character.isLetter(withChange.charAt(i))) {
+        for (int j = i + 1; j < withChange.length(); j++) {
+          if (withChange.charAt(i) == withChange.charAt(j)) {
+            withChange = withChange.replaceAll(Character.toString(withChange.charAt(i)), "");
+            count++;
           }
         }
       }
-      return source;
-    } else {
-      return source;
-    }
+    } return count;
   }
 }
-
->>>>>>> New

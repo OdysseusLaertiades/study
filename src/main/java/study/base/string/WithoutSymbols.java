@@ -16,7 +16,9 @@ public class WithoutSymbols {
 
   public String without(String toRemove, String source) {
 
-      if (toRemove.charAt(0) == ' ' && !toRemove.equals(" ") || source.charAt(0) == ' '){
+      if (toRemove.charAt(0) == ' '
+              && !toRemove.equals(" ")
+              || source.charAt(0) == ' '){
           throw new IllegalArgumentException("You sentence is not exist");
       }
     return source.replace(toRemove,"");

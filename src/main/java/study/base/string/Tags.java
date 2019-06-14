@@ -14,9 +14,9 @@ package study.base.string;
 
 public class Tags {
 
-  public String mark(String tag, String source) {
+  final static StringBuilder sb = new StringBuilder();
 
-    StringBuilder sb = new StringBuilder();
+  public String mark(String tag, String source) {
 
       if (tag.charAt(0) == ' ' || source.charAt(0) == ' '){
         throw new IllegalArgumentException("Error! You word is not legal!");
@@ -28,6 +28,7 @@ public class Tags {
               .append(source)
               .append("</")
               .append(tag)
-              .append(">").toString();
+              .append(">")
+              .toString();
   }
 }
