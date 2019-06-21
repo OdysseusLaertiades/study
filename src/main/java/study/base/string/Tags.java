@@ -14,11 +14,10 @@ package study.base.string;
 
 public class Tags {
 
-  final static StringBuilder sb = new StringBuilder();
+  private final StringBuilder sb = new StringBuilder();
 
   public String mark(String tag, String source) {
-
-      if (tag.charAt(0) == ' ' || source.charAt(0) == ' '){
+      if (tag.trim().isEmpty() || source.trim().isEmpty()){
         throw new IllegalArgumentException("Error! You word is not legal!");
       }
 

@@ -15,23 +15,23 @@ package study.base.string;
 public class Triple {
 
   public int count(String source) {
-
-    String clearStr = source.replaceAll("(?U)[\\pP\\s]", "");
-    return isNextTripleLetterCount(clearStr);
+    return calculateTriples(source.replaceAll("(?U)[\\pP\\s]", ""));
   }
 
-  public static int isNextTripleLetterCount(String sourceStr){
-
+  private int calculateTriples(String sourceStr){
     int count = 0;
     for (int indexOfLetter = 0; indexOfLetter < sourceStr.length()-1; indexOfLetter++) {
-      if (sourceStr.length() > 2
-              && sourceStr.charAt(indexOfLetter) == sourceStr.charAt(indexOfLetter + 1)
-              && sourceStr.charAt(indexOfLetter + 1) == sourceStr.charAt(indexOfLetter + 2)){
-
+      if (isTriple(sourceStr, indexOfLetter)){
         count++;
         indexOfLetter = indexOfLetter + 2;
       }
     }
     return count;
+  }
+
+  private boolean isTriple(String sourceStr, int indexOfLetter) {
+    return sourceStr.length() > 2
+            && sourceStr.charAt(indexOfLetter) == sourceStr.charAt(indexOfLetter + 1)
+            && sourceStr.charAt(indexOfLetter + 1) == sourceStr.charAt(indexOfLetter + 2);
   }
 }

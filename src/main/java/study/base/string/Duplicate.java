@@ -16,28 +16,31 @@ package study.base.string;
 
 public class Duplicate {
 
-  static final StringBuilder sb = new StringBuilder();
+  private String withChange;
 
   public String find(String source) {
-
-    sb.append(source.replaceAll(" ", ""));
-    return findMostRepeatedLetter(sb);
+    return findMostRepeatedLetter(withoutWhitespace(source));
   }
 
-  public static String findMostRepeatedLetter(StringBuilder sb){
+  private String withoutWhitespace (String source){
+    return withChange = source.replaceAll(" ", "");
+  }
 
-    int count = 1, biggestCount = 0;
+  private String findMostRepeatedLetter(String byFind){
+    int count = 1;
+    int biggestCount = 0;
     String result = "";
-    for (int i = 0; i < sb.length(); i++){
-      if(!Character.toString(sb.charAt(i)).equals("")) {
-        for (int j = i + 1; j < sb.length(); j++){
-          if (sb.charAt(i) == sb.charAt(j)) {
+
+    for (int i = 0; i < byFind.length(); i++){
+      if(!Character.toString(byFind.charAt(i)).equals("")) {
+        for (int j = i + 1; j < byFind.length(); j++){
+          if (byFind.charAt(i) == byFind.charAt(j)) {
             count++;
           }
         }
       }
       if (count > biggestCount && count > 1){
-        result = Character.toString(sb.charAt(i));
+        result = Character.toString(byFind.charAt(i));
         biggestCount = count;
       }
       count = 1;
@@ -45,18 +48,11 @@ public class Duplicate {
     return result;
   }
 
-  public static String withChange;
   public String without(String source) {
-
-    withChange = source.replaceAll(" ", "");
-
-    if (removeDuplicateLetters(withChange) > 0){
-      return withChange;
-    } else return source;
+    return removeDuplicateLetters(withoutWhitespace(source)) > 0 ? withChange : source;
   }
 
-  public static int removeDuplicateLetters (String str){
-
+  private int removeDuplicateLetters (String byRemove){
     int  count = 0;
     for (int i = 0; i<withChange.length(); i++){
       if (Character.isLetter(withChange.charAt(i))) {

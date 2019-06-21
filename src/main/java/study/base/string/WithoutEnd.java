@@ -20,7 +20,7 @@ public class WithoutEnd {
   public String without(String source) {
 
       if(source.contains(" ") || source.length() < 2){
-        throw new IllegalArgumentException(format("You word '%s' is not legal!", source));
+        throw new IllegalArgumentException(format("Invalid arguments was passed, namely: '%s'", source));
       }
       return source.substring(1,source.length()-1);
   }
