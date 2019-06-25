@@ -23,7 +23,6 @@ public class LastLetterCounter {
       long sum = 0;
 
       for(String s : source.split("\\s")){
-
           if (s.toLowerCase().endsWith(Character.toString(letter).toLowerCase())){
               sum++;
           }

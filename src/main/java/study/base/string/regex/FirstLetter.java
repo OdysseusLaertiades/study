@@ -11,9 +11,13 @@ package study.base.string.regex;
  */
 
 public class FirstLetter {
-
   public String collect(String source) {
-    return null;
+    String extractLetters = "";
+    for (String word : source.split(" ")) {
+      if(word.matches("[a-zA-Z]+")){
+        extractLetters += word.charAt(0);
+      }
+    }
+    return extractLetters;
   }
-
 }

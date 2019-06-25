@@ -22,8 +22,13 @@ public class Duplicate {
     return findMostRepeatedLetter(withoutWhitespace(source));
   }
 
+  public String without(String source) {
+    return removeDuplicateLetters(withoutWhitespace(source)) > 0 ? withChange : source;
+  }
+
   private String withoutWhitespace (String source){
-    return withChange = source.replaceAll(" ", "");
+    withChange = source.replaceAll(" ", "");
+    return withChange;
   }
 
   private String findMostRepeatedLetter(String byFind){
@@ -46,10 +51,6 @@ public class Duplicate {
       count = 1;
     }
     return result;
-  }
-
-  public String without(String source) {
-    return removeDuplicateLetters(withoutWhitespace(source)) > 0 ? withChange : source;
   }
 
   private int removeDuplicateLetters (String byRemove){
