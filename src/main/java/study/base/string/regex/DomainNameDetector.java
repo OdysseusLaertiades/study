@@ -14,7 +14,13 @@ package study.base.string.regex;
 public class DomainNameDetector {
 
   public String detect(String source) {
-    return null;
+    String domain = "";
+    int i = 0;
+    for (String identify : source.split("\\//")){
+      if (i > 0){
+        domain += identify.substring(identify.indexOf("w.") + 2, identify.indexOf("/"));
+        i++;}
+    }
+    return i > 0 ? domain : source;
   }
-
 }

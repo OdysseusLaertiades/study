@@ -18,7 +18,7 @@ public class Tags {
 
   public String mark(String tag, String source) {
       if (tag.trim().isEmpty() || source.trim().isEmpty()){
-        throw new IllegalArgumentException("Error! You word is not legal!");
+        throw new IllegalArgumentException("Invalid arguments was passed!");
       }
 
       return sb.append("<")
