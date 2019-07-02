@@ -36,7 +36,6 @@ class MatrixTransposerTest {
   private int[][] convertDoubleArray(double[][] arr) {
     return Arrays.stream(arr)
         .map(this::mapToIntArray)
-        .map(int[]::clone)
         .toArray(int[][]::new);
   }
 
