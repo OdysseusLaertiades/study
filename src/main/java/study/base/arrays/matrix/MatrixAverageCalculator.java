@@ -23,13 +23,13 @@ public class MatrixAverageCalculator {
 
   public double calculate(int[][] matrix) {
     int sumOfNumber = 0;
-    double matrixSumLenght = 0;
+    int matrixSumLenght = 0;
     for (int [] matrixLine : matrix){
       for (int matrixNumb : matrixLine){
         sumOfNumber += matrixNumb;
         matrixSumLenght++;
       }
     }
-    return sumOfNumber / matrixSumLenght;
+    return (double) sumOfNumber / matrixSumLenght;
   }
 }
