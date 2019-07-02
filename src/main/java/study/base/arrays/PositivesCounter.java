@@ -10,7 +10,13 @@ package study.base.arrays;
 public class PositivesCounter {
 
   public int count(int[] digits) {
-    return 0;
+    int count = 0;
+    for (int index = 0; index < digits.length; index++){
+      if (digits[index] > 0){
+        count++;
+      }
+    }
+    return count;
   }
 
 }

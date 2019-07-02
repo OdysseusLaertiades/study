@@ -11,10 +11,24 @@ package study.base.arrays;
 public class PositiveFinder {
 
   public int findFirstPositive(int[] array) {
-    return 0;
+    int firstPositive = 0;
+    for (int index = 0; index < array.length; index++){
+      if (array[index] > 0){
+        firstPositive = index;
+        break;
+      }
+    }
+    return firstPositive > 0 ? firstPositive : -1;
   }
 
   public int findLastPositive(int[] array) {
-    return 0;
+    int lastPositive = 0;
+    for (int index = array.length-1; index > 0; index--){
+      if (array[index] > 0){
+        lastPositive = index;
+        break;
+      }
+    }
+    return lastPositive > 0 ? lastPositive : -1;
   }
 }

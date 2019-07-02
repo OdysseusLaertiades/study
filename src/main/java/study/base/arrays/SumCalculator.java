@@ -10,7 +10,10 @@ package study.base.arrays;
 public class SumCalculator {
 
   public int calculate(int[] digits){
-    return 0;
+    int sum = 0;
+    for (int number : digits){
+      sum += number;
+    }
+    return sum;
   }
-
 }

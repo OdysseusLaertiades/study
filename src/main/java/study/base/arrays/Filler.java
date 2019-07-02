@@ -1,5 +1,7 @@
 package study.base.arrays;
 
+import java.util.Arrays;
+
 /**
  * Implement method that fill an array with the specified filler value
  *
@@ -8,6 +10,7 @@ package study.base.arrays;
 
 public class Filler {
 
-  public void fill(String [] array, String filler){}
-
+  public void fill(String [] array, String filler){
+    Arrays.fill(array, filler);
+  }
 }

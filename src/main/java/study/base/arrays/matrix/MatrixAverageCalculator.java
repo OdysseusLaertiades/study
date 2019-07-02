@@ -22,7 +22,14 @@ package study.base.arrays.matrix;
 public class MatrixAverageCalculator {
 
   public double calculate(int[][] matrix) {
-    return 0;
+    int sumOfNumber = 0;
+    double matrixSumLenght = 0;
+    for (int [] matrixLine : matrix){
+      for (int matrixNumb : matrixLine){
+        sumOfNumber += matrixNumb;
+        matrixSumLenght++;
+      }
+    }
+    return sumOfNumber / matrixSumLenght;
   }
-
 }

@@ -11,7 +11,13 @@ package study.base.arrays;
 public class SequenceCreator {
 
   public int[] create(int size) {
-    return null;
+    if (size <= 0) {
+      throw new IllegalArgumentException();
+    }
+    int[] array = new int[size];
+    for (int index = 0; index < array.length; index++){
+      array [index] = index;
+    }
+    return array;
   }
-
 }
