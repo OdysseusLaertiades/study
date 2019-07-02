@@ -18,7 +18,7 @@ class MatrixAverageCalculatorTest {
   void calculateRectangularMatrix() {
     Value.with(
         new int[][]{{1, 5, 4, 78}, {45, -100, 44, 3}, {0, 0, 0, 0}, {-6, -6, 1, 1}, {12, 92, -40, 15}},
-        this::compare
+        this::compareGivenWithReceivedData
     );
   }
 
@@ -26,7 +26,7 @@ class MatrixAverageCalculatorTest {
   void calculateTriangleMatrix() {
     Value.with(
         new int[][]{{1}, {2, 2}, {3, 3, 3}, {4, 4, 4, 4}, {5, 5, 5, 5, 5}},
-        this::compare
+        this::compareGivenWithReceivedData
     );
   }
 
@@ -34,11 +34,11 @@ class MatrixAverageCalculatorTest {
   void calculateIrregularMatrix() {
     Value.with(
         new int[][]{{1}, {1}, {}, {}, {}, {4, -3, -4, 4}},
-        this::compare
+        this::compareGivenWithReceivedData
     );
   }
 
-  private void compare(int[][] matrix) {
+  private void compareGivenWithReceivedData(int[][] matrix) {
     assertThat(
         mapToBigDecimal(arithmeticMean(matrix)),
         comparesEqualTo(mapToBigDecimal(averageCalculator.calculate(matrix)))
