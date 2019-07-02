@@ -11,4 +11,8 @@ public class BatchOperation {
     }
   }
 
+  public static <T> void withEach(Iterable<T> iterable, Consumer<T> c) {
+    iterable.forEach(c);
+  }
+
 }

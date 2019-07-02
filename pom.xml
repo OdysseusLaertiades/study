@@ -11,7 +11,7 @@
     <lombok.version>1.18.6</lombok.version>
     <junit.version>5.4.0</junit.version>
     <hamcrest.version>2.1</hamcrest.version>
-
+    <apache.commons.math>3.6.1</apache.commons.math>
   </properties>
 
   <groupId>study</groupId>
@@ -49,6 +49,11 @@
       <artifactId>hamcrest-library</artifactId>
       <version>${hamcrest.version}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-math3</artifactId>
+      <version>${apache.commons.math}</version>
     </dependency>
 
   </dependencies>
