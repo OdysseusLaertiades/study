@@ -1,14 +1,15 @@
 package study.base.arrays.matrix;
 
-import static java.util.stream.Collectors.toList;
-import static org.junit.jupiter.api.Assertions.*;
-import static util.function.Value.map;
-import static util.function.Value.with;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
-import org.junit.jupiter.api.Test;
+
+import static java.util.stream.Collectors.toList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static util.function.Value.map;
+import static util.function.Value.with;
 
 class MatrixMaxSumRowTest {
 
