@@ -12,7 +12,22 @@ package study.base.arrays.matrix;
 public class MatrixMaxSumRow {
 
   public int find(int[][] matrix) {
-    return 0;
-  }
+    int maxSum = 0;
+    int minSum = 0;
+    int index = 0;
+    int indexMaxSum = 0;
 
+    for (int [] matrixLine : matrix){
+      for (int number : matrixLine){
+        minSum += number;
+      }
+      if (minSum > maxSum){
+        maxSum = minSum;
+        indexMaxSum = index;
+      }
+      index++;
+      minSum = 0;
+    }
+    return indexMaxSum;
+  }
 }
