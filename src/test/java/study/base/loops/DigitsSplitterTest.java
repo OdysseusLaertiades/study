@@ -1,6 +1,7 @@
 package study.base.loops;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static util.function.Value.with;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,10 +11,7 @@ class DigitsSplitterTest {
 
   @Test
   void split() {
-    assertArrayEquals(
-        convert(Integer.MAX_VALUE),
-        digitsSplitter.split(Integer.MAX_VALUE)
-    );
+    with(Integer.MAX_VALUE, decimal -> assertArrayEquals(convert(decimal), digitsSplitter.split(decimal)));
   }
 
   private int[] convert(int numeric) {
