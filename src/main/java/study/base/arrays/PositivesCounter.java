@@ -11,8 +11,8 @@ public class PositivesCounter {
 
   public int count(int[] digits) {
     int count = 0;
-    for (int index = 0; index < digits.length; index++){
-      if (digits[index] > 0){
+    for (int i = 0; i < digits.length; i++){
+      if (digits[i] > 0){
         count++;
       }
     }
