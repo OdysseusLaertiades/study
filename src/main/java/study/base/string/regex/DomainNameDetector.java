@@ -1,5 +1,8 @@
 package study.base.string.regex;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * You will be provided with a chunk of HTML markup. Your task is to identify the unique domain names from
  * the links or Urls which are present in the markup fragment. For example, if the link
@@ -14,14 +17,7 @@ package study.base.string.regex;
 public class DomainNameDetector {
 
   public String detect(String source) {
-    String domain = "";
-    int i = 0;
-    for (String identify : source.split("\\//")){
-      if (i > 0){
-        domain += identify.substring(identify.indexOf(".") + 1, identify.indexOf("/"));
-      }
-        i++;
-    }
-    return i > 1 ? domain : source;
+    Matcher mt = Pattern.compile("\\.(.*?)/").matcher(source);
+    return mt.find() ? mt.group(1) : source;
   }
 }
