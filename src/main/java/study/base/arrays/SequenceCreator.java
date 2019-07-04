@@ -15,8 +15,8 @@ public class SequenceCreator {
       throw new IllegalArgumentException();
     }
     int[] array = new int[size];
-    for (int index = 0; index < array.length; index++){
-      array [index] = index;
+    for (int i = 0; i < array.length; i++){
+      array [i] = i;
     }
     return array;
   }
