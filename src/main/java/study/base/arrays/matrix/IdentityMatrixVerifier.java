@@ -11,25 +11,29 @@ package study.base.arrays.matrix;
 
 public class IdentityMatrixVerifier {
 
-  public boolean verify(int[][] matrix) {
-    int [] [] matrixChange = matrix;
-    boolean result = false;
-    int count = 0;
+    public boolean verify(int[][] matrix) {
+        if (isMatrixNotSquare(matrix)) {
+            throw new IllegalArgumentException("Matrix isn`t square");
+        }
+        return getCountOfMatches(matrix) == matrix.length;
+    }
 
-    if (matrixChange[0].length != matrixChange.length){
-      throw new IllegalArgumentException();
+    private int getCountOfMatches(int[][] matrix) {
+        int count = 0;
+        for (int i = 0; i < matrix[0].length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                if (i == j && matrix[i][j] == 1)
+                    count++;
+                if (i != j && matrix[i][j] != 0) {
+                    count = -222;
+                    break;
+                }
+            }
+        }
+        return count;
     }
-    for (int i = 0; i<matrixChange[0].length; i++){
-      for (int j = 0; j<matrixChange.length; j++){
-        if (i == j && matrixChange [i][j] == 1)
-          count++;
-        if (i != j && matrix [i][j] != 0)
-          return false;
-      }
+
+    private boolean isMatrixNotSquare(int[][] matrix) {
+        return matrix[0].length != matrix.length;
     }
-    if (count == matrixChange.length){
-      result = true;
-    }
-    return result;
-  }
 }
