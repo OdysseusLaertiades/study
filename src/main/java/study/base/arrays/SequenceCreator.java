@@ -12,7 +12,7 @@ public class SequenceCreator {
 
   public int[] create(int size) {
     if (size <= 0) {
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException("Size of your array less or equals of 0");
     }
     int[] array = new int[size];
     for (int i = 0; i < array.length; i++){
