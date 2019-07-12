@@ -12,7 +12,48 @@ package study.base.loops;
 public class PrimesNumbersSearcher {
 
   public int[] searchInRange(int from, int to) {
-    return null;
+      if (isFromBiggestOfTo(from, to)) {
+          throw new IllegalArgumentException("Arguments are invalid");
+      }
+      return searchPrimes(from, to);
   }
 
+    private boolean isFromBiggestOfTo (int from, int to){
+        return to < from;
+    }
+
+  private int [] searchPrimes (int from, int to){
+      int indexOfArray = 0;
+      int[] search = new int[countPrimes(from, to)];
+      for (int i = from; i < to; i++) {
+          if(i < 2)
+              continue;
+          if (isPrimeNumber(i)) {
+              search[indexOfArray] = i;
+              indexOfArray++;
+          }
+      }
+      return search;
+  }
+
+    private int countPrimes(int from, int to) {
+        int count = 0;
+        for (int i = from; i < to; i++) {
+            if(i < 2)
+                continue;
+            if (isPrimeNumber(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private boolean isPrimeNumber(int number) {
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
