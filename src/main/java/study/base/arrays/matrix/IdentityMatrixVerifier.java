@@ -15,19 +15,14 @@ public class IdentityMatrixVerifier {
         if (isMatrixNotSquare(matrix)) {
             throw new IllegalArgumentException("Matrix isn`t square");
         }
-        return getCountOfMatches(matrix) == matrix.length;
+        return getCountOfMatches(new Matrix(matrix)) == matrix.length;
     }
 
-    private int getCountOfMatches(int[][] matrix) {
+    private int getCountOfMatches(Matrix matrix) {
         int count = 0;
-        for (int i = 0; i < matrix[0].length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                if (i == j && matrix[i][j] == 1)
-                    count++;
-                if (i != j && matrix[i][j] != 0) {
-                    count = -222;
-                    break;
-                }
+        for (int i = 0; i < matrix.depthSize(); i++) {
+            for (int j = 0; j < matrix.fullSize(); j++) {
+                count += matrix.getIdentityValueOrNegativeIfNotMatch(i, j);
             }
         }
         return count;
@@ -35,5 +30,38 @@ public class IdentityMatrixVerifier {
 
     private boolean isMatrixNotSquare(int[][] matrix) {
         return matrix[0].length != matrix.length;
+    }
+
+    private class Matrix {
+
+        private final int[][] array2D;
+
+        private Matrix(int[][] array2D) {
+            this.array2D = array2D;
+        }
+
+        private int getElementByIdx(int rowIdx, int lineIdx) {
+            return array2D[rowIdx][lineIdx];
+        }
+
+        private int depthSize() {
+            return array2D[0].length;
+        }
+
+        private int fullSize() {
+            return array2D.length;
+        }
+
+        private int getIdentityValueOrNegativeIfNotMatch(int i, int j) {
+            return isUnit(i, j) ? 1 : isNotIdentityState(i, j) ? Integer.MIN_VALUE : 0;
+        }
+
+        private boolean isUnit(int rowIdx, int lineIdx) {
+            return rowIdx == lineIdx && getElementByIdx(rowIdx, lineIdx) == 1;
+        }
+
+        private boolean isNotIdentityState(int rowIdx, int lineIdx) {
+            return rowIdx != lineIdx && getElementByIdx(rowIdx, lineIdx) != 0;
+        }
     }
 }
