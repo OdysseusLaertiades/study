@@ -15,7 +15,9 @@ package study.base.string;
 public class WithoutSymbols {
 
   public String without(String toRemove, String source) {
-    return null;
+      if (toRemove.trim().isEmpty() && !toRemove.equals(" ") || source.trim().isEmpty()){
+          throw new IllegalArgumentException("Empty string was passed!");
+      }
+    return source.replace(toRemove,"");
   }
-
 }

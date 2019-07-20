@@ -1,6 +1,5 @@
 package study.base.string;
 
-
 /**
  * The web is built with HTML strings like "<i>Yay</i>" which draws Yay as italic text.
  * In this example, the "i" tag makes <i> and </i> which surround the word "Yay".
@@ -15,8 +14,20 @@ package study.base.string;
 
 public class Tags {
 
-  public String mark(String tag, String source) {
-    return null;
-  }
+  private final StringBuilder sb = new StringBuilder();
 
+  public String mark(String tag, String source) {
+      if (tag.trim().isEmpty() || source.trim().isEmpty()){
+        throw new IllegalArgumentException("Invalid arguments was passed!");
+      }
+
+      return sb.append("<")
+              .append(tag)
+              .append(">")
+              .append(source)
+              .append("</")
+              .append(tag)
+              .append(">")
+              .toString();
+  }
 }

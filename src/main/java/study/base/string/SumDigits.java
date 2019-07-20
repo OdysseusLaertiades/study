@@ -1,5 +1,8 @@
 package study.base.string;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Given a string, return the sum of the digits 0-9 that appear in the string, ignoring all other
  * characters. Return 0 if there are no digits in the string.
@@ -12,7 +15,14 @@ package study.base.string;
 public class SumDigits {
 
   public int calculate(String source) {
-    return 0;
+
+    Matcher matcher = Pattern.compile("\\d").matcher(source);
+    int count = 0;
+
+    while(matcher.find()){
+      count += Integer.parseInt(source.substring(matcher.start(),matcher.end()));
+    }
+    return count;
   }
 
 }

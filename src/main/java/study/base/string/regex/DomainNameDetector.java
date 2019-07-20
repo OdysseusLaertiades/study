@@ -1,5 +1,13 @@
 package study.base.string.regex;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static util.function.Value.with;
+
 /**
  * You will be provided with a chunk of HTML markup. Your task is to identify the unique domain names from
  * the links or Urls which are present in the markup fragment. For example, if the link
@@ -13,8 +21,18 @@ package study.base.string.regex;
 
 public class DomainNameDetector {
 
+  private static final Pattern PATTERN = Pattern.compile("https?://(www.|ww2.)?([a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+)");
+
   public String detect(String source) {
-    return null;
+    return String.join(";", with(new ArrayList<String>(), lst -> lst.addAll(findDomainNames(source))));
   }
 
+  private Set<String> findDomainNames(String source) {
+    Matcher matcher = PATTERN.matcher(source);
+    return with(new HashSet<>(), domainNames -> {
+      while (matcher.find()) {
+        domainNames.add(matcher.group(2));
+      }
+    });
+  }
 }

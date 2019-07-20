@@ -1,5 +1,7 @@
 package study.base.string;
 
+import static java.lang.String.format;
+
 /**
  * Given a string that contains some text. Count the number of words ending with selected char (not case sensitive).
  *
@@ -14,7 +16,17 @@ package study.base.string;
 public class LastLetterCounter {
 
   public long count(String source, char letter) {
-    return 0;
-  }
 
+      if (!Character.isLetter(letter)){
+          throw new IllegalArgumentException(format("Given character '%s' is not a letter", letter));
+      }
+      long sum = 0;
+
+      for(String s : source.split("\\s")){
+          if (s.toLowerCase().endsWith(Character.toString(letter).toLowerCase())){
+              sum++;
+          }
+      }
+    return sum;
+  }
 }
