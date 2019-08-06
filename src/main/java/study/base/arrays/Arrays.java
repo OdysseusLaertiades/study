@@ -11,10 +11,10 @@ public class Arrays {
     public static void quickSort(int[] arr) {
         int low = 0;
         int high = arr.length - 1;
-        quickSortMethd(arr, low, high);
+        quickSortMethod(arr, low, high);
     }
 
-    private static void quickSortMethd(int[] arr, int low, int high) {
+    private static void quickSortMethod(int[] arr, int low, int high) {
         int average = (high + low) / 2;
         int mainNumb = arr[average];
         int minIdx = low;
@@ -37,10 +37,10 @@ public class Arrays {
             }
         }
         if (high > minIdx) {
-            quickSortMethd(arr, minIdx, high);
+            quickSortMethod(arr, minIdx, high);
         }
         if (low < maxIdx) {
-            quickSortMethd(arr, low, maxIdx);
+            quickSortMethod(arr, low, maxIdx);
         }
     }
 
