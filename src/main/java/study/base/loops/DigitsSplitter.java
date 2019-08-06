@@ -9,9 +9,9 @@ package study.base.loops;
 public class DigitsSplitter {
 
   public int[] split(int numeric) {
-    int [] parseNumbers = new int [(int)Math.log10(numeric)+1];
-    for (int i = (int)Math.log10(numeric); i >= 0; i--){
-      parseNumbers [i] = numeric % 10;
+    int[] parseNumbers = new int[(int) Math.log10(numeric) + 1];
+    for (int i = (int) Math.log10(numeric); i >= 0; i--) {
+      parseNumbers[i] = numeric % 10;
       numeric /= 10;
     }
     return parseNumbers;
