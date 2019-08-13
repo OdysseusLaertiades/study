@@ -1,7 +1,5 @@
 package study.base.arrays;
 
-import static java.lang.String.format;
-
 /**
  * Implement sort algorithms and binary search that return idx of element or -1 if element is not found
  */
@@ -86,38 +84,21 @@ public class Arrays {
     }
 
     public static int binarySearch(int[] sortedArray, int findMe) {
-        int high = sortedArray.length;
-        if (!checkSorting(sortedArray) && high > 0) {
-            return binarySearchMethod(sortedArray, 0, high, findMe);
-        } else return -1;
-    }
-
-    private static boolean checkSorting(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] < arr[i]) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private static int binarySearchMethod(int[] arr, int low, int high, int find) {
-        int average = (low + high) / 2;
+        int average;
+        int high = sortedArray.length-1;
+        int low = 0;
+        int idx = -1;
         while (low <= high) {
-            if (arr[average] < find) {
+            average = (low + high) / 2;
+            if (sortedArray[average] < findMe) {
                 low = average + 1;
-            } else if (arr[average] == find) {
-                return average;
+            } else if (sortedArray[average] == findMe) {
+                idx = average;
+                break;
             } else {
                 high = average - 1;
             }
-            average = (low + high) / 2;
         }
-        if (low > high) {
-            System.out.println(format("Number %d is not found", find));
-        }
-        return -1;
+        return idx;
     }
 }
