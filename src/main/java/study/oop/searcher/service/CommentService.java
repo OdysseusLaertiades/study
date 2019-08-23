@@ -12,4 +12,6 @@ public interface CommentService {
 
     Comment[] findAllComments();
 
+    Comment[] findAllByUserEmail(String email);
+
 }

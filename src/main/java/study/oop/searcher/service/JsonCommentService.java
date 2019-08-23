@@ -23,4 +23,9 @@ public class JsonCommentService implements CommentService {
   public Comment[] findAllComments() {
     return new Comment[0];
   }
+
+  @Override
+  public Comment[] findAllByUserEmail(String email) {
+    return new Comment[0];
+  }
 }
