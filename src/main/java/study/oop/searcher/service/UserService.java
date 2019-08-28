@@ -11,7 +11,7 @@ public interface UserService {
 
     User findUserById(String userId);
 
-    User updateUserCompany(Company company);
+    User updateUserCompany(String userId, Company company);
 
     User[] findAllByCity(String city);
 
