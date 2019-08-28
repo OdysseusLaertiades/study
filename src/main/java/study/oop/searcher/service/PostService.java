@@ -8,8 +8,6 @@ public interface PostService {
 
     Post findById(String id);
 
-    Post[] findAllByUserEmail(String email);
-
     Post[] findAllPosts();
 
 }

@@ -15,11 +15,6 @@ public class JsonPostService implements PostService {
   }
 
   @Override
-  public Post[] findAllByUserEmail(String email) {
-    return new Post[0];
-  }
-
-  @Override
   public Post[] findAllPosts() {
     return new Post[0];
   }
