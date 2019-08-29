@@ -6,38 +6,40 @@ import java.util.ArrayList;
 
 public class JsonCommentService implements CommentService {
 
-  ArrayList<Comment> comment = new ArrayList<Comment>();
-  ArrayList idArr = new ArrayList();
+  ArrayList<Comment> comments = new ArrayList();
+  ArrayList idComment = new ArrayList();
+  ArrayList emailList = new ArrayList();
   Comment comm = new Comment();
+  Comment[] comArray = new Comment[comments.size()];
 
   @Override
   public void saveComment(Comment comment) {
-    this.comment.add(comment);
-    idArr.add(comm.id);
+    comments.add(comment);
+    idComment.add(comm.id);
+    emailList.add(comm.email);
   }
 
   @Override
   public void deleteComment(String id) {
-    comment.remove(idArr.indexOf(id));
-    idArr.remove(idArr.indexOf(id));
+    comments.remove(idComment.indexOf(id));
+    idComment.remove(idComment.indexOf(id));
   }
 
   @Override
   public Comment findCommentById(String id) {
-    return comment.get(idArr.indexOf(id));
+    return comments.get(idComment.indexOf(id));
   }
 
   @Override
   public Comment[] findAllComments() {
-    Comment[] comArray = new Comment[comment.size()];
-    for (int i = 0; i < comment.size(); i++) {
-      comArray[i] = comment.get(i);
+    for (int i = 0; i < comments.size(); i++) {
+      comArray[i] = comments.get(i);
     }
     return comArray;
   }
 
   @Override
   public Comment[] findAllByUserEmail(String email) {
-    return new Comment[0];
+    return new Comment[]{comments.get(emailList.indexOf(email))};
   }
 }
