@@ -28,9 +28,14 @@ public class JsonUserService implements UserService {
   }
 
   @Override
+<<<<<<< HEAD
   public User updateUserCompany(Company company) {
     User companyOfUser = new User(company);
     return companyOfUser;
+=======
+  public User updateUserCompany(String userId, Company company) {
+    return null;
+>>>>>>> c95e7d05cd979492637169125d6788d26ce0bf03
   }
 
   @Override
