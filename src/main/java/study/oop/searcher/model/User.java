@@ -1,12 +1,12 @@
 package study.oop.searcher.model;
 
 public class User {
-    int id = 9;
-    String name = "Glenna Reichert";
-    String username = "Delphine";
-    String email = "Chaim McDerm ott@dana.io";
-    String phone = "(775)976-6794x41206";
-    String website = "conrad.com";
+    public String id = "9";
+    public String name = "Glenna Reichert";
+    public String username = "Delphine";
+    public String email = "Chaim McDerm ott@dana.io";
+    public String phone = "(775)976-6794x41206";
+    public String website = "conrad.com";
 
     public static void main(String[] args) {
         Address address = new Address();
