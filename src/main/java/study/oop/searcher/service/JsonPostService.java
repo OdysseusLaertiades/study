@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public class JsonPostService implements PostService {
 
-  ArrayList<Post> posts = new ArrayList<Post>();
-  ArrayList idPost = new ArrayList();
-  Post pos = new Post();
+  public ArrayList<Post> posts = new ArrayList<Post>();
+  public ArrayList idPost = new ArrayList();
+  public Post pos = new Post();
 
   @Override
   public void savePost(Post post) {

@@ -1,5 +1,7 @@
 package study.oop.searcher.service;
 
+import study.oop.searcher.model.Comment;
+
 public class JsonPostSearchService implements SearchService {
 
     private final CommentService commentService;
@@ -14,6 +16,13 @@ public class JsonPostSearchService implements SearchService {
 
     @Override
     public String[] findAllPostTitlesWhereUserLeaveComment(String userId) {
+
+        Comment comment = new Comment();
+        if (Integer.getInteger(userId) > 0) {
+            commentService.saveComment(comment);
+            postService.findById(userId);
+            return new String[0];
+        }
         return new String[0];
     }
 }
