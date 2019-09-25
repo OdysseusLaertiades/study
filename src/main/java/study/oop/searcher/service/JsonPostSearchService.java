@@ -1,6 +1,9 @@
 package study.oop.searcher.service;
 
 import study.oop.searcher.model.Comment;
+import study.oop.searcher.model.Post;
+
+import java.util.Arrays;
 
 public class JsonPostSearchService implements SearchService {
 
@@ -16,13 +19,20 @@ public class JsonPostSearchService implements SearchService {
 
     @Override
     public String[] findAllPostTitlesWhereUserLeaveComment(String userId) {
-
-        Comment comment = new Comment();
-        if (Integer.getInteger(userId) > 0) {
-            commentService.saveComment(comment);
-            postService.findById(userId);
-            return new String[0];
+        String[] postTitles = new String[0];
+        int i = 0;
+        for (Comment comment : findUserWhoLeaveComment(userId)) {
+            Post post = postService.findById(comment.getPostId());
+            if (post != null) {
+                postTitles = Arrays.copyOf(postTitles, i + 1);
+                postTitles[i] = post.getTitle();
+                i++;
+            }
         }
-        return new String[0];
+        return postTitles;
+    }
+
+    public Comment[] findUserWhoLeaveComment(String userId) {
+        return commentService.findAllByUserEmail(userService.findUserById(userId).getEmail());
     }
 }

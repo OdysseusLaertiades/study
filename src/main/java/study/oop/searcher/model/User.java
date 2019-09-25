@@ -96,21 +96,4 @@ public class User {
     public Company getCompany() {
         return company;
     }
-
-    public static void main(String[] args) {
-        Address address = new Address();
-        address.setStreet("Dayna Park");
-        address.setSuite("Suite 449");
-        address.setCity("Bartholomburry");
-        address.setZipcode("76495-3109");
-
-        Geo geo = new Geo();
-        geo.setLat(24.6463);
-        geo.setLng(-168.8889);
-
-        Company company = new Company();
-        company.setName("Yost and Sons");
-        company.setCatchPhrase("Switchable contextually-based project");
-        company.setBs("aggregate real-time technologies");
-    }
 }

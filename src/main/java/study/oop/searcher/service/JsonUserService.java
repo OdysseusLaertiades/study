@@ -3,52 +3,74 @@ package study.oop.searcher.service;
 import study.oop.searcher.model.Company;
 import study.oop.searcher.model.User;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+
+import static java.lang.String.format;
 
 public class JsonUserService implements UserService {
 
-  ArrayList<User> usersArr = new ArrayList<User>();
-  User user = new User();
-  User[] userArray = new User[usersArr.size()];
+    private User[] usersArr = new User[0];
+    User user = new User();
 
-  @Override
-  public void saveUser(User user) {
-    usersArr.add(user);
-  }
-
-  @Override
-  public void deleteUser(String userId) {
-    usersArr.remove(userId);
-  }
-
-  @Override
-  public User findUserById(String userId) {
-    return usersArr.get(Integer.parseInt(userId));
-  }
-
-  @Override
-  public User updateUserCompany(Company company) {
-    user.setCompany(company);
-    return user;
-  }
-
-  @Override
-  public User[] findAllByCity(String city) {
-    for (int i = 0; i < userArray.length; i++){
-      if (userArray[i].equals(city)) {
-        return new User[i];
-      }
+    @Override
+    public void saveUser(User user) {
+        int i = 0;
+        while (i < usersArr.length) {
+            if (usersArr[i] == user) {
+                throw new RuntimeException(format("user %s already contained  in list", user));
+            }
+            i++;
+        }
+        if (i == usersArr.length) {
+            usersArr = Arrays.copyOf(usersArr, i + 1);
+            usersArr[i] = user;
+        }
     }
-    return null;
-  }
 
-  @Override
-  public User[] findAllUsers() {
-    for (int i = 0; i < userArray.length; i++){
-      if (i > 0) {
-        return new User[i];
-      }
+    @Override
+    public void deleteUser(String userId) {
+        int idIn = Integer.parseInt(userId);
+        if (usersArr.length < idIn) {
+            throw new RuntimeException(format("id user %s already contained  in list", userId));
+        }
+        System.arraycopy(usersArr, idIn + 1, usersArr, idIn - 1, usersArr.length - idIn - 1);
+        usersArr = Arrays.copyOf(usersArr, usersArr.length - 1);
     }
-    return null;
-  }
+
+    @Override
+    public User findUserById(String userId) {
+        int idIn = Integer.parseInt(userId);
+        if (usersArr.length < idIn) {
+            throw new RuntimeException(format("id user %s doesn't contained  in list", userId));
+        }
+        return usersArr[idIn];
+    }
+
+    @Override
+    public User updateUserCompany(Company company) {
+        if (user.getCompany().equals(company)) {
+            throw new RuntimeException(format("company %s already contained  in list", company));
+        }
+        user.setCompany(company);
+        return user;
+    }
+
+    @Override
+    public User[] findAllByCity(String city) {
+        User[] userList = new User[0];
+        int i = 0;
+        for (User user : usersArr) {
+            if (user.getAddress().equals(city)) {
+                userList = Arrays.copyOf(userList, i + 1);
+                userList[i] = user;
+                i++;
+            }
+        }
+        return userList;
+    }
+
+    @Override
+    public User[] findAllUsers() {
+        return usersArr;
+    }
 }

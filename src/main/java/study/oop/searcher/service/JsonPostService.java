@@ -2,31 +2,40 @@ package study.oop.searcher.service;
 
 import study.oop.searcher.model.Post;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+
+import static java.lang.String.format;
 
 public class JsonPostService implements PostService {
 
-  public ArrayList<Post> posts = new ArrayList<Post>();
-  public ArrayList idPost = new ArrayList();
-  public Post pos = new Post();
+    private Post[] postsArr = new Post[0];
 
-  @Override
-  public void savePost(Post post) {
-    posts.add(post);
-    idPost.add(pos.id);
-  }
-
-  @Override
-  public Post findById(String id) {
-    return posts.get(idPost.indexOf(id));
-  }
-
-  @Override
-  public Post[] findAllPosts() {
-    Post[] arrPosts = new Post[posts.size()];
-    for (int i = 0; i < posts.size(); i++) {
-      arrPosts[i] = posts.get(i);
+    @Override
+    public void savePost(Post post) {
+        int i = 0;
+        while (postsArr.length > i) {
+            if (postsArr[i] == post) {
+                throw new RuntimeException(format("post %s already contained  in list", post));
+            }
+            i++;
+        }
+        if (i == postsArr.length) {
+            postsArr = Arrays.copyOf(postsArr, i + 1);
+            postsArr[i] = post;
+        }
     }
-    return arrPosts;
-  }
+
+    @Override
+    public Post findById(String id) {
+        int idIn = Integer.parseInt(id);
+        if (postsArr.length < idIn) {
+            throw new RuntimeException(format("id of post %s doesn't contained  in list", id));
+        }
+        return postsArr[idIn];
+    }
+
+    @Override
+    public Post[] findAllPosts() {
+        return postsArr;
+    }
 }
